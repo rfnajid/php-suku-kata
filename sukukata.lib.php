@@ -1,40 +1,29 @@
 <?php
     class SukuKataLib{
 
-        function sliceSyllables($str){
-            echo 'slicing : '.$str;
-            echo '<br>';
-            echo 'size : '.strlen($str);
-            echo '<br>';
+        function getSyllables($str){
 
             $res = [];
 
             while($str){
-                $var = str_split($this->removeStringFromNonLetter($str));
+                $str = $this->removeStringFromNonLetterExceptSpace($this->convertDashToSpace($str));
+                $var = str_split($str);
                 $firstVowelIndex=strcspn(strtolower($str), "aeiou");
 
                 $target = $firstVowelIndex;
                 $nextIndex =$firstVowelIndex+1;
                 $next = $var[$nextIndex];
 
-                echo 'first vowel : '.$firstVowelIndex.'<br>';
-                echo 'next of first vowel : '.$var[$firstVowelIndex+1].'<br>';
-
                 if(!$this->isVowel($next)){
                     $next2Index = $firstVowelIndex+2;
                     $next2=$var[$next2Index];
 
                     if($this->isPotentiallySpecialCharacter($next)){
-                        echo 'potentially special char : '.$next.'<br>';
                         if($this->isSpecialCharacters($next.$next2)){
-                            echo 'special chartacter : '.$next.$next2.'<br>';
                             $next2Index +=1;
                             $nextIndex +=1;
                         }
                     }
-
-
-                    echo('next 2 '.$next2.'<br>');
 
                     if(!$this->isVowel($next2)){
                         $target=$nextIndex;
@@ -45,11 +34,12 @@
                 $split1 = substr($str,0,$target);
                 $split2 = substr($str,$target);
 
-                echo ('<br>splice res : '.$split1.'<br>');
                 array_push($res,$split1);
                 $str=$split2;
-                echo ('new str : '.$str.'<br>');
             }
+
+            if($res[count($res)-1]===' ')
+                array_pop($res);
 
             return $res;
         }
@@ -77,9 +67,19 @@
             return in_array($char,array('sy','ng','ny','kh'));
         }
 
-        function removeStringFromNonLetter($str){
-            return preg_replace("/[^A-Za-z]/", '', $str);
+        function removeVowel($str)
+        {
+            return preg_replace("/[aiueo]/", '',$this->removeStringFromNonLetterExceptSpace($str));
         }
+
+        function removeStringFromNonLetterExceptSpace($str){
+            return preg_replace("/[^A-Za-z ]/", '',$str);
+        }
+
+        function convertDashToSpace($str){
+            return preg_replace("/[--]/",' ',$str);
+        }
+
 
     }
 ?>

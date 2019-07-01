@@ -17,6 +17,6 @@ echo 'count syllables "'.$q.'" : '.$lib->countSyllabels($q);
 echo '<br><br>trying to slice...<br>';
 
 
-print_r($lib->sliceSyllables($q));
+print_r($lib->getSyllables($q));
 
 ?>
