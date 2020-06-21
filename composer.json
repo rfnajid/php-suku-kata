@@ -1,0 +1,13 @@
+{
+    "name": "rfnajid/sukukata",
+    "description": "Library untuk mengolah suku kata Bahasa Indonesia",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ridhazis Faranto Najid",
+            "email": "me@rfnaj.id"
+        }
+    ],
+    "require": {}
+}
