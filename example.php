@@ -1,6 +1,6 @@
 <?php
 
-require_once("lib/SukuKataLib.php");
+require_once("vendor/autoload.php");
 
 use SukuKataLib\SukuKataLib;
 
