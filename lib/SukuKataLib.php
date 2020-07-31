@@ -14,7 +14,12 @@
     class SukuKataLib{
 
         /**
-         * function untuk parsing suku kata
+         * function untuk parsing suku kata berdasarkan vokalnya
+         * huruf diftong tidak digunakan sama sekali pada function ini
+         * contoh :
+         * input : pandai, mau, boikot
+         * output : pan-da-i, ma-u, bo-i-kot
+         *
          *
          * @param string $str kata yang akan di parsing suku katanya
          * @return resource array of string yang berisi suku kata
@@ -28,6 +33,12 @@
                 $var = str_split($str);
                 $firstVokalIndex=strcspn(strtolower($str), "aeiou");
 
+                // jika sudah tidak ada lagi huruf vokal
+                if($firstVokalIndex>=strlen($str)){
+                    $res[count($res)-1] .= $str;
+                    break;
+                }
+
                 $target = $firstVokalIndex;
                 $nextIndex =$firstVokalIndex+1;
                 $next = $var[$nextIndex];
@@ -36,10 +47,11 @@
                     $next2Index = $firstVokalIndex+2;
                     $next2=$var[$next2Index];
 
-                    if(self::isPotentiallySpecialCharacter($next)){
-                        if(self::isSpecialCharacters($next.$next2)){
+                    if(self::isPotentiallyGabunganKonsonan($next)){
+                        if(self::isGabunganKonsonan($next.$next2)){
                             $next2Index +=1;
                             $nextIndex +=1;
+                            $next2=$var[$next2Index];
                         }
                     }
 
@@ -136,7 +148,7 @@
          * @param string $char karakter yang akan dicek
          * @return boolean hasil berupa boolean
          */
-        private static function isSpecialCharacters($char){
+        private static function isGabunganKonsonan($char){
             $char = strtolower($char);
             return in_array($char,array('sy','ng','ny','kh'));
         }
@@ -147,7 +159,7 @@
          * @param string $char karakter akan dicek
          * @return boolean hasil berupa boolean
          */
-        private static function isPotentiallySpecialCharacter($char){
+        private static function isPotentiallyGabunganKonsonan($char){
             $char = strtolower($char);
             return in_array($char,array('s','y','n','g','k','h'));
         }

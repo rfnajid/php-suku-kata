@@ -10,7 +10,12 @@ class DataTest {
         return [
             new TestModel("minuman", ["mi","nu","man"]),
             new TestModel("ikhlas", ["ikh","las"]),
-            new TestModel("syukur", ["syu","kur"])
+            new TestModel("syukur", ["syu","kur"]),
+            new TestModel("pelangi", ["pe","la","ngi"]),
+            new TestModel("pandai",["pan","da","i"]),
+            new TestModel("boikot",["bo","i","kot"]),
+            new TestModel("mau",["ma","u"]),
+            new TestModel("sains",["sa","ins"])
         ];
     }
 
