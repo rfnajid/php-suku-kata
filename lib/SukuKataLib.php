@@ -13,18 +13,21 @@
 
     class SukuKataLib{
 
+
         /**
-         * function untuk parsing suku kata berdasarkan vokalnya
-         * huruf diftong tidak digunakan sama sekali pada function ini
-         * contoh :
+         * function untuk parsing suku kata
+         * contoh, dengan diftong :
+         * input : pandai, mau, boikot
+         * output : pan-dai, mau, boi-kot
+         * contoh, tanpa diftong :
          * input : pandai, mau, boikot
          * output : pan-da-i, ma-u, bo-i-kot
          *
-         *
          * @param string $str kata yang akan di parsing suku katanya
+         * @param boolean $diftong apakah menggunakan huruf diftong atau tidak, default true
          * @return resource array of string yang berisi suku kata
          */
-        public static function getSukuKata($str){
+        public static function getSukuKata($str, $diftong=true){
 
             $res = [];
 
@@ -74,15 +77,16 @@
             return $res;
         }
 
-
         /**
-         * menghitung suku kata dengan cepat
+         * menghitung jumlah suku kata pada sebuah kata
          *
          * @param string $str kata yang akan dihitung suku katanya
+         * @param string $algo algoritma yang digunakan DEFAULT, VOKAL
          * @return int jumlah suku kata
          */
-        public static function countSukuKata($str){
-            return self::countVokal($str);
+        public static function countSukuKata($str, $algo="DEFAULT"){
+            if($algo=="VOKAL") return self::countVokal($str);
+            else return count(self::getSukuKata($str));
         }
 
         /**
@@ -138,10 +142,9 @@
             return preg_replace("/[aiueo]/", '',self::removeNonLetter($str));
         }
 
-
         /**
-         * mengecek apakah huruf tersebut adalah huruf spesial
-         * huruf spesial yang dimaksud adalah 2 huruf yang berbunyi satu
+         * mengecek apakah huruf tersebut adalah huruf gabungan konsonan
+         * huruf gabungan konsonan yang dimaksud adalah 2 huruf yang berbunyi satu
          * contohnya huruf : sy, ng, ny, kh
          * contoh kata : syawal, ngantuk, nyenyak, akhir
          *
@@ -154,7 +157,7 @@
         }
 
         /**
-         * mengecek apakah huruf tersebut berpotensi sebagai huruf spesial
+         * mengecek apakah huruf tersebut berpotensi sebagai huruf gabungan konsonan
          *
          * @param string $char karakter akan dicek
          * @return boolean hasil berupa boolean
@@ -162,6 +165,20 @@
         private static function isPotentiallyGabunganKonsonan($char){
             $char = strtolower($char);
             return in_array($char,array('s','y','n','g','k','h'));
+        }
+
+        /**
+         * mengecek apakah huruf tersebut adalah huruf diftong
+         * huruf diftong adalah gabungan huruf vokal yang memiliki satu suku kata saja
+         * contoh huruf diftong : ai, au, ei, oi
+         * contoh kata : syawal, pandai, mau, survei, boikot
+         *
+         * @param string $char karakter yang akan dicek
+         * @return boolean hasil berupa boolean
+         */
+        private static function isDiftong($char){
+            $char = strtolower($char);
+            return in_array($char,array('ai','au','ei','oi'));
         }
 
         /**

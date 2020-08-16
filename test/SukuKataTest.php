@@ -54,7 +54,7 @@ class SukuKataTest extends TestCase {
             foreach ($this->dataTest->$function() as $data) {
                 $this->assertEquals(
                     $data->expectedResult,
-                    $this->sukuKataLib->$function($data->value)
+                    $this->sukuKataLib->$function($data->value, $data->param)
                 );
             }
         }else {

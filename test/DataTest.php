@@ -8,14 +8,15 @@ class DataTest {
 
     public function getSukuKata() {
         return [
-            new TestModel("minuman", ["mi","nu","man"]),
-            new TestModel("ikhlas", ["ikh","las"]),
-            new TestModel("syukur", ["syu","kur"]),
-            new TestModel("pelangi", ["pe","la","ngi"]),
-            new TestModel("pandai",["pan","da","i"]),
-            new TestModel("boikot",["bo","i","kot"]),
-            new TestModel("mau",["ma","u"]),
-            new TestModel("sains",["sa","ins"])
+            new TestModel("minuman", ["mi","nu","man"], false),
+            new TestModel("ikhlas", ["ikh","las"], false),
+            new TestModel("syukur", ["syu","kur"], false),
+            new TestModel("pelangi", ["pe","la","ngi"], false),
+            new TestModel("pandai",["pan","da","i"], false),
+            new TestModel("boikot",["bo","i","kot"], false),
+            new TestModel("mau",["ma","u"], false),
+            new TestModel("kemauan",["ke","ma","u","an"], false),
+            new TestModel("sains",["sa","ins"], false)
         ];
     }
 
