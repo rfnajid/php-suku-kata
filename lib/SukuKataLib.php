@@ -44,7 +44,7 @@
 
                 $target = $firstVokalIndex;
                 $nextIndex =$firstVokalIndex+1;
-                $next = $var[$nextIndex];
+                $next = strlen($str)>$nextIndex?$var[$nextIndex]:null;
 
                 if(!self::isVokal($next)){
                     $next2Index = $firstVokalIndex+2;
