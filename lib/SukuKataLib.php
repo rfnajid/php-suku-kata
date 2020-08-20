@@ -48,7 +48,7 @@
 
                 if(!self::isVokal($next)){
                     $next2Index = $firstVokalIndex+2;
-                    $next2=$var[$next2Index];
+                    $next2=strlen($str)>$next2Index?$var[$next2Index]:null;
 
                     if(self::isPotentiallyGabunganKonsonan($next)){
                         if(self::isGabunganKonsonan($next.$next2)){
