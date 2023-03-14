@@ -38,9 +38,11 @@
 
                 // jika sudah tidak ada lagi huruf vokal
                 if($firstVokalIndex>=strlen($str)){
-                    $resCount = count($res);
-                    $resCount = $resCount > 0 ? $resCount -1 : 0;
-                    $res[$resCount] .= $str;
+                    if(count($res)>0){
+                        $res[$count($res)-1] .= $str;
+                    }else{
+                        $res[0]=$str;
+                    }
                     break;
                 }
 
@@ -73,7 +75,7 @@
                 $str=$split2;
             }
 
-            if($res[count($res)-1]===' ')
+            if(count($res) >0 && $res[count($res)-1]===' ')
                 array_pop($res);
 
             return $res;
