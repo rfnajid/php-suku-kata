@@ -19,6 +19,7 @@ class DataTest {
             new TestModel("sains",["sa","ins"], false),
             new TestModel("b", ["b"], false),
             new TestModel("abang", ["a","bang"], false),
+            new TestModel("absorb", ["ab","sorb"], false),
         ];
     }
 

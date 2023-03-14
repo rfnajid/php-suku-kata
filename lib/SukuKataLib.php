@@ -39,7 +39,7 @@
                 // jika sudah tidak ada lagi huruf vokal
                 if($firstVokalIndex>=strlen($str)){
                     if(count($res)>0){
-                        $res[$count($res)-1] .= $str;
+                        $res[count($res)-1] .= $str;
                     }else{
                         $res[0]=$str;
                     }
