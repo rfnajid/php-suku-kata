@@ -54,7 +54,7 @@
                         if(self::isGabunganKonsonan($next.$next2)){
                             $next2Index +=1;
                             $nextIndex +=1;
-                            $next2=$var[$next2Index];
+                            $next2=strlen($str)>$next2Index?$var[$next2Index]:null;
                         }
                     }
 
