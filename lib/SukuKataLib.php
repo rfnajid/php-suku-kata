@@ -38,7 +38,9 @@
 
                 // jika sudah tidak ada lagi huruf vokal
                 if($firstVokalIndex>=strlen($str)){
-                    $res[count($res)-1] .= $str;
+                    $resCount = count($res);
+                    $resCount = $resCount > 0 ? $resCount -1 : 0;
+                    $res[$resCount] .= $str;
                     break;
                 }
 

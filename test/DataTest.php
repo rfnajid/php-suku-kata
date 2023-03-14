@@ -16,7 +16,9 @@ class DataTest {
             new TestModel("boikot",["bo","i","kot"], false),
             new TestModel("mau",["ma","u"], false),
             new TestModel("kemauan",["ke","ma","u","an"], false),
-            new TestModel("sains",["sa","ins"], false)
+            new TestModel("sains",["sa","ins"], false),
+            new TestModel("b", ["b"], false),
+            new TestModel("abang", ["a","bang"], false),
         ];
     }
 
