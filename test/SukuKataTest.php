@@ -12,7 +12,7 @@ class SukuKataTest extends TestCase {
     private $sukuKataLib;
     private $dataTest;
 
-    public function setUp() {
+    protected function setUp(): void {
         $this->sukuKataLib = new SukuKataLib();
         $this->dataTest = new DataTest();
     }
